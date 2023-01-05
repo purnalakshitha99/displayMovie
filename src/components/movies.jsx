@@ -1,10 +1,20 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
+import { getGenres } from "../services/fakeGenreService";
 
 class Movies extends Component {
   state = {
     movies: getMovies(),
   };
+
+  handleDelete = (movie) => {
+    //yata onclicked ekata adalawa api click karana item ekata adala data tika me movie kiyana ekata enawa
+    console.log(movie);
+    const movies = this.state.movies.filter((m) => m._id !== movie._id); //methanin e apu data ekata adala id ekata samana nathi list eke anith id balanawa ethakota cliked karapu eka arenn anith okkoma movies kiyana set ekata watila setState kiyana eken update karala pennawa
+    this.setState({ movies }); //methanin ara id ekata adala nathi okkom tika display karanwa e kiyanne ckiked karpu eka arenn anith okkoma display karanwa
+    console.log(movies); //console.log eke balaganna puluwan cliked karapu eka arenna anith ewa tika
+  };
+
   render() {
     return (
       <table className="table">
@@ -14,6 +24,7 @@ class Movies extends Component {
             <th>Genre</th>
             <th>Stock</th>
             <th>Rate</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -23,6 +34,15 @@ class Movies extends Component {
               <td>{movie.genre.name}</td>
               <td>{movie.numberInStock}</td>
               <td>{movie.dailyRentalRate}</td>
+              <td>
+                {" "}
+                <button
+                  onClick={() => this.handleDelete(movie)}
+                  className="btn btn-danger btn-sm"
+                >
+                  Delete
+                </button>
+              </td>
             </tr>
           ))}
         </tbody>
