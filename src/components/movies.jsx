@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
-import Like from "./like";
+import Like from "./common/like";
 
 class Movies extends Component {
   state = {
@@ -13,6 +13,10 @@ class Movies extends Component {
     const movies = this.state.movies.filter((m) => m._id !== movie._id); //methanin e apu data ekata adala id ekata samana nathi list eke anith id's balanawa ethakota cliked karapu eka arenn anith okkoma movies kiyana set ekata watila setState kiyana eken update karala pennawa //m.id kiyanne movies object eke values ekata watenne ekin eka// ita psse m.id ekai clicked karapu eka thiyenne movie.id eke ekath ekk balanwa
     this.setState({ movies }); //methanin ara id ekata adala nathi okkom tika display karanwa e kiyanne ckiked karpu eka arenn anith okkoma display karanwa
     console.log(movies); //console.log eke balaganna puluwan cliked karapu eka arenna anith ewa tika
+  };
+
+  handleLike = (movie) => {
+    movie.liked = true;
   };
 
   render() {
@@ -41,7 +45,7 @@ class Movies extends Component {
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
                 <td>
-                  <Like />
+                  <Like liked={movie.liked} onLike={this.handleLike} />
                 </td>
                 <td>
                   {" "}
