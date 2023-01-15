@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { getMovies } from "../services/fakeMovieService";
+import Like from "./like";
 
 class Movies extends Component {
   state = {
@@ -9,7 +10,7 @@ class Movies extends Component {
   handleDelete = (movie) => {
     //yata onclicked ekata adalawa api click karana item ekata adala data tika me movie kiyana ekata enawa
     console.log(movie);
-    const movies = this.state.movies.filter((m) => m._id !== movie._id); //methanin e apu data ekata adala id ekata samana nathi list eke anith id balanawa ethakota cliked karapu eka arenn anith okkoma movies kiyana set ekata watila setState kiyana eken update karala pennawa
+    const movies = this.state.movies.filter((m) => m._id !== movie._id); //methanin e apu data ekata adala id ekata samana nathi list eke anith id's balanawa ethakota cliked karapu eka arenn anith okkoma movies kiyana set ekata watila setState kiyana eken update karala pennawa //m.id kiyanne movies object eke values ekata watenne ekin eka// ita psse m.id ekai clicked karapu eka thiyenne movie.id eke ekath ekk balanwa
     this.setState({ movies }); //methanin ara id ekata adala nathi okkom tika display karanwa e kiyanne ckiked karpu eka arenn anith okkoma display karanwa
     console.log(movies); //console.log eke balaganna puluwan cliked karapu eka arenna anith ewa tika
   };
@@ -29,6 +30,7 @@ class Movies extends Component {
               <th>Stock</th>
               <th>Rate</th>
               <th></th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -38,6 +40,9 @@ class Movies extends Component {
                 <td>{movie.genre.name}</td>
                 <td>{movie.numberInStock}</td>
                 <td>{movie.dailyRentalRate}</td>
+                <td>
+                  <Like />
+                </td>
                 <td>
                   {" "}
                   <button
