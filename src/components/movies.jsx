@@ -30,7 +30,8 @@ class Movies extends Component {
   };
 
   handlePageChange = (page) => {
-    console.log(page);
+    //eha patte pagination ekedi onclike eka click weddi ekata adala onPagechange ekata enwa page eke value ekath aragenama(page) //ethakota eka value eka aragena movies eke onPageChange ekata adala function eka e kiyanne methana (handlePageChange) setState kara gannwa page eke dan thiyana value eka current page eke value ekata evita movies eke button eka cliked karan warayak warayak gane eken page eke value eka genalla current page eke value eka update karai eka karanne methanin
+    this.setState({ currentPage: page });
   };
 
   render() {
