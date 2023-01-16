@@ -28,8 +28,8 @@ class Movies extends Component {
     this.setState({ movies });
   };
 
-  handlePageChange = (page) => {
-    console.log("page components");
+  handlePageChange = (p) => {
+    console.log(p);
   };
 
   render() {
